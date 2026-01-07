@@ -1,0 +1,97 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Current C File",
+            "type": "shell",
+            "command": "C:/msys64/ucrt64/bin/gcc.exe",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-std=c11",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/build/${fileBasenameNoExtension}.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile current C file with debugging info"
+        },
+        {
+            "label": "Build Current C++ File",
+            "type": "shell",
+            "command": "C:/msys64/ucrt64/bin/g++.exe",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-std=c++17",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/build/${fileBasenameNoExtension}.exe"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile current C++ file with debugging info"
+        },
+        {
+            "label": "Build Current C File (with pthread)",
+            "type": "shell",
+            "command": "C:/msys64/ucrt64/bin/gcc.exe",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-std=c11",
+                "-pthread",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/build/${fileBasenameNoExtension}.exe"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile current C file with pthread support"
+        },
+        {
+            "label": "Build Current C++ File (with pthread)",
+            "type": "shell",
+            "command": "C:/msys64/ucrt64/bin/g++.exe",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-std=c++17",
+                "-pthread",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/build/${fileBasenameNoExtension}.exe"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile current C++ file with pthread support"
+        },
+        {
+            "label": "Run Current Program",
+            "type": "shell",
+            "command": "${workspaceFolder}/build/${fileBasenameNoExtension}.exe",
+            "group": "test",
+            "dependsOn": "Build Current C File",
+            "detail": "Build and run the current program"
+        },
+        {
+            "label": "Clean Build Directory",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Remove-Item -Path '${workspaceFolder}/build/*' -Force -ErrorAction SilentlyContinue"
+            ],
+            "group": "build",
+            "detail": "Clean all compiled files from build directory"
+        }
+    ]
+}
