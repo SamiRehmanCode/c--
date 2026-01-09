@@ -1,6 +1,7 @@
 // Basic C program template
 // Compile: gcc -o build/hello src/basics/hello.c
 // Run: build/hello
+// gcc hello.c -o ..\..\build\hello_c.exe
 
 #include <stdio.h>
 #include <stdlib.h>
